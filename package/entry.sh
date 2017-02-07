@@ -49,6 +49,7 @@ if [ "$1" == "kubelet" ]; then
         done
     done
     mount --rbind /host/dev /dev
+    mount --rbind /var/log/containers /var/log/containers
     FQDN=$(hostname --fqdn || hostname)
     exec "$@" --hostname-override ${FQDN}
 elif [ "$1" == "kube-apiserver" ]; then
